@@ -1,0 +1,53 @@
+drop database userdb;
+
+create schema `userdb`;
+use `userdb`;
+
+create table buyer(
+buyerid varchar(50) primary key,
+name varchar(50),
+email varchar(50),
+phoneno bigint,
+password varchar(25),
+isprivileged boolean,
+rewardpoints int,
+isactive boolean);
+insert into buyer values('B1','humera','hum@123',8008008001,'humera_1R3',true,1000, true);
+insert into buyer values('B2','sumisha','sum@456',8008008002,'sum_123R', false, 1233, false);
+insert into buyer values('B3','adithya','adi@123',8008008003, 'adhi*23Q', true, 4656, true);
+
+select * from buyer;
+
+create table seller(
+sellerid integer primary key,
+name varchar(50),
+email varchar(50),
+phoneno bigint,
+password varchar(25),
+isactive boolean);
+insert into seller values(1,'humera','hum@123',8008008001,'humera_1R3', true);
+insert into seller values(2,'sumisha','sum@456',8008008002,'sum_123R', false);
+insert into seller values(3,'adithya','adi@123',8008008003, 'adhi*23Q', true);
+
+select * from seller;
+
+create table wishlist(
+buyerid varchar(50),
+prodid varchar(50),
+primary key(buyerid,prodid));
+insert into wishlist values('B1','P1');
+insert into wishlist values('B2','P2');
+insert into wishlist values('B3','P3');
+
+select * from wishlist;
+
+create table cart(
+buyerid varchar(50),
+prodid varchar(50),
+quantity integer,
+primary key(buyerid,prodid));
+insert into cart values('B1','P1',2);
+insert into cart values('B2','P2',3);
+insert into cart values('B3','P3',1);
+
+select * from cart;
